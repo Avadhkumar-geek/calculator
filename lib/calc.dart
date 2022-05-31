@@ -114,6 +114,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const SizedBox(
                     height: 80,
@@ -123,13 +124,12 @@ class _HomePageState extends State<HomePage> {
                     reverse: true,
 
                     // User Expression
-                    child: Center(
-                      child: Container(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          usrInput,
-                          style: len(),
-                        ),
+
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        usrInput,
+                        style: len(),
                       ),
                     ),
                   ),
