@@ -126,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                     // User Expression
 
                     child: Container(
+                      padding: const EdgeInsets.only(right: 8),
                       alignment: Alignment.centerRight,
                       child: Text(
                         usrInput,
@@ -194,6 +195,7 @@ class _HomePageState extends State<HomePage> {
                             buttonTapped: () {
                               setState(() {
                                 usrAns = eval().toString().replaceAll('.0', '');
+                                usrInput = usrAns;
                               });
                             },
                             color: colors(buttons[item]),
