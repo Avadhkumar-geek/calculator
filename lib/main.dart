@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:calculator/calc.dart';
+import 'package:calculator/splash_page.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom]);
   runApp(const MyApp());
 }
@@ -13,8 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyCalc(),
-    );
+    return MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+          textTheme: GoogleFonts.montserratTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => (const SplashPage()),
+          '/home': (context) => (const MyCalc()),
+        });
   }
 }
