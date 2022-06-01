@@ -35,17 +35,16 @@ dependencies:
     google_fonts: ^3.0.1
     math_expressions: ^2.3.1
 
-flutter_icons:
-    android: true
-    ios: true
-    image_path_android: "assets/launcher/Calculator_App_Icon.png"
-    image_path_ios: "assets/launcher/Calculator_App_Icon.png"
-
 dev_dependencies:
     flutter_launcher_icons: ^0.9.2
     flutter_lints: ^2.0.0
     flutter_test:
         sdk: flutter
+
+flutter_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "assets/icon/icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

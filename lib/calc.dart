@@ -15,7 +15,7 @@ class MyCalc extends StatelessWidget {
           useMaterial3: true,
           fontFamily: GoogleFonts.lato().fontFamily,
           textTheme: const TextTheme(
-              subtitle1: TextStyle(fontWeight: FontWeight.w100, fontSize: 80),
+              subtitle1: TextStyle(fontWeight: FontWeight.w100),
               subtitle2: TextStyle(
                   fontWeight: FontWeight.w100,
                   fontSize: 40,
