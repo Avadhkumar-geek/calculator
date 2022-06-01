@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<String> buttons = [
     'AC',
-    'DEL',
+    '⌫',
     '%',
     '÷',
     '7',
@@ -85,9 +85,9 @@ class _HomePageState extends State<HomePage> {
         item == '%' ||
         item == '÷' ||
         item == '×') {
-      return const Color.fromARGB(255, 245, 215, 176);
-    } else if (item == 'AC' || item == 'DEL') {
-      return const Color.fromARGB(255, 198, 212, 158);
+      return const Color.fromARGB(255, 243, 182, 172);
+    } else if (item == 'AC' || item == '⌫') {
+      return const Color.fromRGBO(208, 80, 57, 1);
     }
     return const Color.fromARGB(255, 247, 237, 228);
   }
@@ -106,25 +106,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 238, 225, 212),
+        actions: const <Widget>[Icon(Icons.more_vert)],
+      ),
       backgroundColor: const Color.fromARGB(255, 238, 225, 212),
       body: Center(
         child: Column(
           children: <Widget>[
             // Screen
             Expanded(
+              flex: 6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 80,
-                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     reverse: true,
 
                     // User Expression
-
                     child: Container(
                       padding: const EdgeInsets.only(right: 8),
                       alignment: Alignment.centerRight,
@@ -149,10 +150,11 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // NumPad
+
             Expanded(
-              flex: 2,
+              flex: 14,
               child: Container(
-                color: Colors.white,
+                color: const Color.fromRGBO(56, 57, 67, 1),
                 child: Center(
                   child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -171,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             color: colors(buttons[item]),
-                            textColor: Colors.black,
+                            textColor: Colors.white,
                             text: buttons[item]);
                       }
 
@@ -185,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             color: colors(buttons[item]),
-                            textColor: Colors.black,
+                            textColor: Colors.white,
                             text: buttons[item]);
                       }
 
@@ -212,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             color: colors(buttons[item]),
-                            textColor: Colors.black,
+                            textColor: const Color.fromRGBO(208, 80, 57, 1),
                             text: buttons[item]);
                       }
                     },
