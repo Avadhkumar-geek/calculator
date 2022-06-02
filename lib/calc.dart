@@ -103,12 +103,32 @@ class _HomePageState extends State<HomePage> {
     return eval;
   }
 
+  String _selectedItem = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 238, 225, 212),
-        actions: const <Widget>[Icon(Icons.more_vert)],
+        actions: <Widget>[
+          PopupMenuButton<String>(
+              // Callback that sets the selected popup menu item.
+              onSelected: (String item) {
+                setState(() {
+                  _selectedItem = item;
+                });
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'Privacy Policy',
+                      child: Text('Privacy Policy'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'About',
+                      child: Text('About'),
+                    ),
+                  ])
+        ],
       ),
       backgroundColor: const Color.fromARGB(255, 238, 225, 212),
       body: Center(
