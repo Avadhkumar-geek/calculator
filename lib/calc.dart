@@ -5,7 +5,6 @@ import 'package:math_expressions/math_expressions.dart';
 
 class MyCalc extends StatelessWidget {
   const MyCalc({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -108,122 +107,207 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 238, 225, 212),
-        actions: const <Widget>[Icon(Icons.more_vert)],
-      ),
-      backgroundColor: const Color.fromARGB(255, 238, 225, 212),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            // Screen
-            Expanded(
-              flex: 6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    reverse: true,
-
-                    // User Expression
-                    child: Container(
-                      padding: const EdgeInsets.only(right: 8),
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        usrInput,
-                        style: len(),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+              icon: const Icon(
+                Icons.more_vert,
+                color: Color.fromRGBO(208, 80, 57, 1),
+              ),
+              color: const Color.fromARGB(255, 243, 182, 172),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                    PopupMenuItem<String>(
+                      onTap: () => showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title:
+                                  const Center(child: Text('Privacy Policy')),
+                              content: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: RichText(
+                                    text: const TextSpan(children: [
+                                  TextSpan(
+                                    text: 'Information Collection and Use\n',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                      text:
+                                          'For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.\nThe app does use third party services that may collect information used to identify you.\n\n'),
+                                  TextSpan(
+                                      text: 'Log Data\n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
+                                  TextSpan(
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                      text:
+                                          'I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.\n\n'),
+                                  TextSpan(
+                                      text: 'Cookies\n',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black)),
+                                  TextSpan(
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                      text:
+                                          "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory."),
+                                ])),
+                              ),
+                            );
+                          }),
+                      child: const Text(
+                        'Privacy Policy',
                       ),
                     ),
-                  ),
+                    PopupMenuItem<String>(
+                      onTap: () => showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Image.asset('assets/icon/babg_logo.png'),
+                              content: const Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Text(
+                                    'BΔBG Corporation is a group of IT professionals enthusiastic in creating quality free tools and content on the Internet.\n\n©2022 All Rights Reserved.'),
+                              ),
+                            );
+                          }),
+                      child: const Text('About'),
+                    ),
+                  ])
+        ],
+      ),
+      backgroundColor: const Color.fromARGB(255, 238, 225, 212),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          // Screen
 
-                  // Answer
-                  Container(
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  reverse: true,
+
+                  // User Expression
+                  child: Container(
                     padding: const EdgeInsets.only(right: 8),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      usrAns,
-                      style: Theme.of(context).textTheme.subtitle2,
+                      usrInput,
+                      style: len(),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
 
-            // NumPad
-
-            Expanded(
-              flex: 14,
-              child: Container(
-                color: const Color.fromRGBO(56, 57, 67, 1),
-                child: Center(
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: buttons.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4),
-                    itemBuilder: (BuildContext context, int item) {
-                      // AC Button
-                      if (item == 0) {
-                        return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                usrInput = '';
-                                usrAns = '';
-                              });
-                            },
-                            color: colors(buttons[item]),
-                            textColor: Colors.white,
-                            text: buttons[item]);
-                      }
-
-                      // DEL Button
-                      else if (item == 1) {
-                        return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                usrInput =
-                                    usrInput.substring(0, usrInput.length - 1);
-                              });
-                            },
-                            color: colors(buttons[item]),
-                            textColor: Colors.white,
-                            text: buttons[item]);
-                      }
-
-                      // = Button
-                      else if (item == buttons.length - 1) {
-                        return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                usrAns = eval().toString().replaceAll('.0', '');
-                                usrInput = usrAns;
-                              });
-                            },
-                            color: colors(buttons[item]),
-                            textColor: Colors.black,
-                            text: buttons[item]);
-                      }
-
-                      // All Other Buttons
-                      else {
-                        return MyButton(
-                            buttonTapped: () {
-                              setState(() {
-                                usrInput += buttons[item];
-                              });
-                            },
-                            color: colors(buttons[item]),
-                            textColor: const Color.fromRGBO(208, 80, 57, 1),
-                            text: buttons[item]);
-                      }
-                    },
+          // Answer
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  padding: const EdgeInsets.only(right: 8, bottom: 20),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    usrAns,
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
               ),
+            ],
+          ),
+
+          // NumPad
+
+          Container(
+            padding: const EdgeInsets.all(7.5),
+            height: 486,
+            color: const Color.fromRGBO(56, 57, 67, 1),
+            child: Center(
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: buttons.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4),
+                itemBuilder: (BuildContext context, int item) {
+                  // AC Button
+                  if (item == 0) {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrInput = '';
+                            usrAns = '';
+                          });
+                        },
+                        color: colors(buttons[item]),
+                        textColor: Colors.white,
+                        text: buttons[item]);
+                  }
+
+                  // DEL Button
+                  else if (item == 1) {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrInput =
+                                usrInput.substring(0, usrInput.length - 1);
+                          });
+                        },
+                        color: colors(buttons[item]),
+                        textColor: Colors.white,
+                        text: buttons[item]);
+                  }
+
+                  // = Button
+                  else if (item == buttons.length - 1) {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrAns = eval().toString().replaceAll('.0', '');
+                            usrInput = usrAns;
+                          });
+                        },
+                        color: colors(buttons[item]),
+                        textColor: Colors.black,
+                        text: buttons[item]);
+                  }
+
+                  // All Other Buttons
+                  else {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrInput += buttons[item];
+                          });
+                        },
+                        color: colors(buttons[item]),
+                        textColor: const Color.fromRGBO(208, 80, 57, 1),
+                        text: buttons[item]);
+                  }
+                },
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
