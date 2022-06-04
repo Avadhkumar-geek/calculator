@@ -4,9 +4,8 @@ import 'package:calculator/splash_page.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.bottom]);
+void main() async {
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(const MyApp());
 }
 
