@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                               content: const Padding(
                                 padding: EdgeInsets.all(15),
                                 child: Text(
-                                    'BΔBG Corporation is a group of IT professionals enthusiastic in creating quality free tools and content on the Internet.'),
+                                    'BΔBG Corporation is a group of IT professionals enthusiastic in creating quality free tools and content on the Internet.\n\n©2020 All Rights Reserved.'),
                               ),
                             );
                           }),
@@ -240,7 +240,7 @@ class _HomePageState extends State<HomePage> {
 
           Container(
             padding: const EdgeInsets.all(7.5),
-            height: 480,
+            height: 486,
             color: const Color.fromRGBO(56, 57, 67, 1),
             child: Center(
               child: GridView.builder(
