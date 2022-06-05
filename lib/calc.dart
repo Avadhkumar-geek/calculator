@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   double eval() {
-    String expr2 = usrInput.replaceAll('%, '*(1/100)');
+    String expr2 = usrInput.replaceAll('%', '*(1/100)');
     String expr1 = expr2.replaceAll('÷', '/');
     String expr = expr1.replaceAll('×', '*');
     Parser p = Parser();
