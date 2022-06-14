@@ -17,7 +17,7 @@ class MyCalc extends StatelessWidget {
               subtitle1: TextStyle(fontWeight: FontWeight.w100),
               subtitle2: TextStyle(
                   fontWeight: FontWeight.w100,
-                  fontSize: 40,
+                  fontSize: 37,
                   color: Colors.blueGrey))),
     );
   }
@@ -37,19 +37,19 @@ class _HomePageState extends State<HomePage> {
   TextStyle len() {
     if (usrInput.length > 11) {
       TextStyle l = const TextStyle(
-        fontSize: 40,
+        fontSize: 38,
       );
       return l;
     }
     if (usrInput.length > 8) {
       TextStyle l = const TextStyle(
-        fontSize: 60,
+        fontSize: 52,
       );
       return l;
     }
 
     TextStyle l = const TextStyle(
-      fontSize: 80,
+      fontSize: 60,
     );
     return l;
   }
@@ -199,6 +199,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -206,11 +207,27 @@ class _HomePageState extends State<HomePage> {
 
                   // User Expression
                   child: Container(
+                    color: Colors.amber,
                     padding: const EdgeInsets.only(right: 8),
-                    alignment: Alignment.centerRight,
+                    // alignment: Alignment.centerRight,
                     child: Text(
                       usrInput,
                       style: len(),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                      color: Colors.blueAccent,
+                      padding: const EdgeInsets.only(right: 8),
+                      // alignment: Alignment.centerRight,
+                      child: Text(
+                        usrAns,
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
                     ),
                   ),
                 ),
@@ -218,36 +235,21 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          // Answer
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  padding: const EdgeInsets.only(right: 8, bottom: 20),
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    usrAns,
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
           // NumPad
 
           Container(
-            padding: const EdgeInsets.all(7.5),
-            height: 486,
+            height: 413,
             color: const Color.fromRGBO(56, 57, 67, 1),
             child: Center(
               child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: buttons.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
+                    childAspectRatio: 100 / 93,
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 0.1),
+                padding: const EdgeInsets.all(10),
+                shrinkWrap: true,
                 itemBuilder: (BuildContext context, int item) {
                   // AC Button
                   if (item == 0) {
