@@ -77,22 +77,21 @@ class _HomePageState extends State<HomePage> {
     '=',
   ];
 
-  Color colors(String item) {
+  bool isChar(String item) {
     if (item == '+' ||
         item == '=' ||
         item == '-' ||
         item == '%' ||
         item == '÷' ||
         item == '×') {
-      return const Color.fromARGB(255, 243, 182, 172);
-    } else if (item == 'AC' || item == '⌫') {
-      return const Color.fromRGBO(208, 80, 57, 1);
+      return true;
     }
-    return const Color.fromARGB(255, 247, 237, 228);
+    return false;
   }
 
   double eval() {
-    String expr1 = usrInput.replaceAll('÷', '/');
+    String expr2 = usrInput.replaceAll('%', '*(1/100)');
+    String expr1 = expr2.replaceAll('÷', '/');
     String expr = expr1.replaceAll('×', '*');
     Parser p = Parser();
     Expression exp = p.parse(expr);
@@ -236,7 +235,6 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // NumPad
-
           Container(
             height: 413,
             color: const Color.fromRGBO(56, 57, 67, 1),
@@ -260,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                             usrAns = '';
                           });
                         },
-                        color: colors(buttons[item]),
+                        color: const Color.fromRGBO(208, 80, 57, 1),
                         textColor: Colors.white,
                         text: buttons[item]);
                   }
@@ -274,12 +272,12 @@ class _HomePageState extends State<HomePage> {
                                 usrInput.substring(0, usrInput.length - 1);
                           });
                         },
-                        color: colors(buttons[item]),
+                        color: const Color.fromRGBO(208, 80, 57, 1),
                         textColor: Colors.white,
                         text: buttons[item]);
                   }
 
-                  // = Button
+                  // '=' Button
                   else if (item == buttons.length - 1) {
                     return MyButton(
                         buttonTapped: () {
@@ -288,8 +286,35 @@ class _HomePageState extends State<HomePage> {
                             usrInput = usrAns;
                           });
                         },
-                        color: colors(buttons[item]),
+                        color: const Color.fromARGB(255, 243, 182, 172),
                         textColor: Colors.black,
+                        text: buttons[item]);
+                  }
+
+                  //'%' button
+                  else if (item == 2) {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrInput += buttons[item];
+                            usrAns = eval().toString().replaceAll('.0', '');
+                          });
+                        },
+                        color: const Color.fromARGB(255, 243, 182, 172),
+                        textColor: const Color.fromRGBO(208, 80, 57, 1),
+                        text: buttons[item]);
+                  }
+
+                  // Characters
+                  else if (isChar(buttons[item])) {
+                    return MyButton(
+                        buttonTapped: () {
+                          setState(() {
+                            usrInput += buttons[item];
+                          });
+                        },
+                        color: const Color.fromARGB(255, 243, 182, 172),
+                        textColor: const Color.fromRGBO(208, 80, 57, 1),
                         text: buttons[item]);
                   }
 
@@ -299,9 +324,10 @@ class _HomePageState extends State<HomePage> {
                         buttonTapped: () {
                           setState(() {
                             usrInput += buttons[item];
+                            usrAns = eval().toString().replaceAll('.0', '');
                           });
                         },
-                        color: colors(buttons[item]),
+                        color: const Color.fromARGB(255, 247, 237, 228),
                         textColor: const Color.fromRGBO(208, 80, 57, 1),
                         text: buttons[item]);
                   }
