@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     child: Container(
                       padding: const EdgeInsets.only(right: 8),
-                      // alignment: Alignment.centerRight,
+                      alignment: Alignment.centerRight,
                       child: Text(
                         usrAns,
                         style: Theme.of(context).textTheme.subtitle2,
