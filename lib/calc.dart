@@ -17,7 +17,7 @@ class MyCalc extends StatelessWidget {
               subtitle1: TextStyle(fontWeight: FontWeight.w100),
               subtitle2: TextStyle(
                   fontWeight: FontWeight.w100,
-                  fontSize: 37,
+                  fontSize: 38,
                   color: Colors.blueGrey))),
     );
   }
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     }
     if (usrInput.length > 8) {
       TextStyle l = const TextStyle(
-        fontSize: 52,
+        fontSize: 49,
       );
       return l;
     }
@@ -195,7 +195,6 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           // Screen
-
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -207,21 +206,22 @@ class _HomePageState extends State<HomePage> {
 
                   // User Expression
                   child: Container(
-                    color: Colors.amber,
+                    height: 76,
                     padding: const EdgeInsets.only(right: 8),
-                    // alignment: Alignment.centerRight,
+                    alignment: Alignment.centerRight,
                     child: Text(
                       usrInput,
                       style: len(),
                     ),
                   ),
                 ),
+
+                //Answer
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Container(
-                      color: Colors.blueAccent,
                       padding: const EdgeInsets.only(right: 8),
                       // alignment: Alignment.centerRight,
                       child: Text(
@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: buttons.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 100 / 93,
+                    childAspectRatio: 100 / 88,
                     crossAxisCount: 4,
                     mainAxisSpacing: 0.1),
                 padding: const EdgeInsets.all(10),
