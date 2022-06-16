@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                               content: const Padding(
                                 padding: EdgeInsets.all(15),
                                 child: Text(
-                                    'BΔBG Corporation is a group of IT professionals enthusiastic in creating quality free tools and content on the Internet.\n\n©2022 All Rights Reserved.'),
+                                    'BΔBG Corporation is a group of IT professionals enthusiastic in creating free quality tools and content on the Internet.\n\n©2022 All Rights Reserved.'),
                               ),
                             );
                           }),
