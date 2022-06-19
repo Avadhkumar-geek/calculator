@@ -243,9 +243,9 @@ class _HomePageState extends State<HomePage> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: buttons.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 100 / 88,
+                    childAspectRatio: 100 / 85,
                     crossAxisCount: 4,
-                    mainAxisSpacing: 0.1),
+                    mainAxisSpacing: 0),
                 padding: const EdgeInsets.all(10),
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int item) {
