@@ -324,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                         buttonTapped: () {
                           setState(() {
                             usrInput += buttons[item];
-                            usrAns = eval().toString().replaceAll('.0', '');
+                            usrAns = eval().toString();
                           });
                         },
                         color: const Color.fromARGB(255, 247, 237, 228),
