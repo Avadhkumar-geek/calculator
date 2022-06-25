@@ -33,6 +33,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var usrInput = '';
   var usrAns = '';
+  var lastChar = '';
 
   TextStyle len() {
     if (usrInput.length > 11) {
@@ -296,7 +297,14 @@ class _HomePageState extends State<HomePage> {
                     return MyButton(
                         buttonTapped: () {
                           setState(() {
-                            usrInput += buttons[item];
+                            lastChar = buttons[item];
+                            if (isChar(usrInput[usrInput.length - 1])) {
+                              usrInput =
+                                  usrInput.substring(0, usrInput.length - 1) +
+                                      buttons[item];
+                            } else {
+                              usrInput += buttons[item];
+                            }
                             usrAns = eval().toString().replaceAll('.0', '');
                           });
                         },
@@ -310,7 +318,16 @@ class _HomePageState extends State<HomePage> {
                     return MyButton(
                         buttonTapped: () {
                           setState(() {
-                            usrInput += buttons[item];
+                            lastChar = buttons[item];
+                            //isChar(usrInput[usrInput.length - 1])
+                            if (usrInput[usrInput.length - 1] == '+' ||
+                                usrInput[usrInput.length - 1] == '-') {
+                              usrInput =
+                                  usrInput.substring(0, usrInput.length - 1) +
+                                      buttons[item];
+                            } else {
+                              usrInput += buttons[item];
+                            }
                           });
                         },
                         color: const Color.fromARGB(255, 243, 182, 172),
@@ -323,6 +340,7 @@ class _HomePageState extends State<HomePage> {
                     return MyButton(
                         buttonTapped: () {
                           setState(() {
+                            lastChar = buttons[item];
                             usrInput += buttons[item];
                             usrAns = eval().toString();
                           });
