@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:calculator/calc.dart';
-import 'package:calculator/splash_page.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,9 +27,8 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
-        initialRoute: '/',
+        initialRoute: '/home',
         routes: {
-          '/': (context) => (const SplashPage()),
           '/home': (context) => (const MyCalc()),
         });
   }
