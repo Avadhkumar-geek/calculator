@@ -315,7 +315,7 @@ class _HomePageState extends State<HomePage> {
                             usrAns = eval().toString().replaceAll('.0', '');
                           });
                         },
-                        color: const Color.fromRGBO(0, 0, 0, 0.75),
+                        color: const Color.fromRGBO(0, 0, 0, 0.5),
                         textColor: const Color.fromARGB(255, 233, 77, 49),
                         text: buttons[item]);
                   }
@@ -337,7 +337,7 @@ class _HomePageState extends State<HomePage> {
                             }
                           });
                         },
-                        color: const Color.fromRGBO(0, 0, 0, 0.75),
+                        color: const Color.fromRGBO(0, 0, 0, 0.6),
                         textColor: const Color.fromARGB(255, 233, 77, 49),
                         text: buttons[item]);
                   }
@@ -352,7 +352,7 @@ class _HomePageState extends State<HomePage> {
                             usrAns = eval().toString();
                           });
                         },
-                        color: const Color.fromRGBO(0, 0, 0, 0.5),
+                        color: const Color.fromRGBO(0, 0, 0, 0.2),
                         textColor: const Color.fromARGB(255, 233, 77, 49),
                         text: buttons[item]);
                   }
