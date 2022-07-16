@@ -4,8 +4,8 @@ A new Flutter project.
 
 # Screenshots
 
-![image](https://user-images.githubusercontent.com/81379791/171411317-7b01d02e-32f3-4745-97a0-0d2b52411e44.png)
-![image](https://user-images.githubusercontent.com/81379791/171411352-11f6a3e5-4500-4270-85f4-efd78ca21753.png)
+![calculator](https://user-images.githubusercontent.com/81379791/179356789-dd68ddd4-ac05-4380-923e-75085dc7b4ff.png)
+
 
 
 ## Getting Started
